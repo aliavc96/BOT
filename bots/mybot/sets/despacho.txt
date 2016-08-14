@@ -1,0 +1,7 @@
+despacho
+estudio
+habitacion
+sitio
+departamento
+sala
+oficina

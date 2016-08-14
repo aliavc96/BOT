@@ -1,0 +1,2506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+
+<!-- nombre: Ana Alicia Vilchez Ceballos-->
+
+<category>
+<pattern> * </pattern>
+
+<template>
+		<condition name="nombre">
+			<li value="unknown">
+			<random>
+				<li>lo siento, no tengo respuestas para eso.</li>
+				<li>no se de que me estas hablando</li>
+				<li>eso no te lo puedo responder </li>
+				<li>perdona, que?</li>
+			</random>
+			</li>
+
+			<li> 
+			<random>
+
+				<li>pues veras <get name="nombre"/>... eso no te lo puedo responder </li>
+				<li>no se de que me estas hablando <get name="nombre"/>... :( </li>
+				<li>lo siento, no tengo respuestas para eso. <get name="nombre"/>...</li>
+				<li>de que me estas hablando <get name="nombre"/>... eso no te lo puedo responder </li>
+
+			</random>
+			</li>
+		
+		</condition>
+
+	</template>
+
+</category>
+
+
+<!-- regla 0-->
+<category>
+	<pattern> ^ <set>juego</set> ^ </pattern>
+	<template>
+		de acuerdo ;D Quieres preguntar o que te pregunten?
+	</template>
+</category>
+
+<!-- regla 1-->
+<category>
+	<pattern> ^ PREGUNTAR ^ </pattern>
+	<template>
+		<think>
+			<set name="list_nombres">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+		</think>
+		<think>
+			<set name="lista"> <get name="list_nombres"/> </set>
+			<set name="cantidad"><srai>COUNT <get name="lista"/></srai></set>
+			<set name="pos"><srai>RANDOM <get name="cantidad"/></srai></set>
+			<set name="elegida">
+			<srai>
+			SELECTITEM <get name="pos"/> IN <get name="lista"/>
+			</srai>
+			</set>
+		</think>
+		<think>
+			<set name="cpelo">
+				<map name="pelo"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="barba">
+				<map name="barba"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="ojos">
+				<map name="ojos"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="bigote">
+				<map name="bigote"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="genero">
+				<map name="genero"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="gafas">
+				<map name="gafas"><get name="elegida"/></map>
+			</set>
+		</think>
+		<think>
+			<set name="piel">
+				<map name="piel"><get name="elegida"/></map>
+			</set>
+		</think>
+	
+		<random>
+			<li> ADELANTE!!!! empieza a preguntar</li>
+			<li> alla vamos!! pregunta</li>
+			<li> comencemos... preguntame algo</li> 
+			<li>venga, a ver que tal se te da esto... pregunta</li>
+			<li>OK... pregunta</li>
+			<li> ya tengo un nombre... empezamos!!! </li>
+		</random>
+			
+	</template>
+</category>
+
+
+
+<!-- regla 2-->
+<category>
+	<pattern>^ DIME UN NOMBRE ^</pattern>
+	<template>
+		<think>
+			<set name="lista"> <get name="list_nombres"/> </set>
+			<set name="cantidad"><srai>COUNT <get name="lista"/></srai></set>
+			<set name="pos"><srai>RANDOM <get name="cantidad"/></srai></set>
+			<set name="elegida">
+			<srai>
+			SELECTITEM <get name="pos"/> IN <get name="lista"/>
+			</srai>
+			</set>
+		</think>
+	<get name="elegida"/>
+	</template>
+</category>
+
+<!-- estas reglas estan hechas para el color de pelo -->
+<category>
+	<pattern>TIENE ^ PELO ^ OSCURO ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="moreno"> si, tiene el pelo oscuro </li>
+			<li value="marron"> asi es, tiene el pelo oscuro </li>
+			<li> no, no tiene el pelo oscuro </li>
+		</condition>
+	</template>
+
+</category>
+
+<category>
+	<pattern>TIENE ^ <set>pelirrojo</set> ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="pelirrojo"> si, tiene el pelo pelirrojo </li>
+			<li> no, no tiene el pelo pelirrojo</li>
+		</condition>
+	</template>
+
+</category>
+
+
+<category>
+	<pattern>TIENE ^ <set>rubio</set> ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="rubio"> si, tiene el pelo rubio </li>
+			<li> no, no tiene el pelo rubio </li>
+		</condition>
+	</template>
+
+</category>
+
+
+<category>
+	<pattern>TIENE ^ <set>moreno</set> ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="moreno"> si, tiene el pelo moreno </li>
+			<li> no, no tiene el pelo moreno </li>
+		</condition>
+	</template>
+
+</category>
+
+
+
+<category>
+	<pattern>TIENE ^ MARRON ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="marron"> si, tiene el pelo marron </li>
+			<li> no, no tiene el pelo marron </li>
+		</condition>
+	</template>
+
+</category>
+
+<category>
+	<pattern>ES ^ CALVO ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="calvo"> si, es calvo el pobre... Tiene la magia del calvo en su poder </li>
+			<li> no, no es calvo xD </li>
+		</condition>
+	</template>
+
+</category>
+
+<!-- esta regla estan hechas para saber si tiene bigote-->
+
+<category>
+	<pattern>TIENE ^ BIGOTE ^</pattern>
+	<template>
+		<condition name="bigote">
+			<li value="si"> si, tiene bigote </li>
+			<li> no, no tiene bigote </li>
+		</condition>
+	</template>
+
+</category>
+
+
+
+<!-- regla para saber si tiene barba-->
+
+<category>
+	<pattern>TIENE ^ BARBA ^</pattern>
+	<template>
+		<condition name="barba">
+			<li value="si"> asi es, tiene barba </li>
+			<li> barba no tiene, no :/ </li>
+		</condition>
+	</template>
+
+</category>
+
+<category>
+	<pattern>TIENE ^ BLANCO ^</pattern>
+	<template>
+		<condition name="cpelo">
+			<li value="blanco"> si, tiene el pelo canoso jajajaja </li>
+			<li> que va :/ </li>
+		</condition>
+	</template>
+
+</category>
+
+<!-- regla para saber el color de ojos-->
+
+<category>
+	<pattern>TIENE ^ OSCUROS ^</pattern>
+	<template>
+		<condition name="ojos">
+			<li value="oscuros"> efectivamente, tiene los ojos oscuros </li>
+			<li> no, oscuros no... :/ </li>
+		</condition>
+	</template>
+
+</category>
+
+<category>
+	<pattern>TIENE ^ CLAROS ^</pattern>
+	<template>
+		<condition name="ojos">
+			<li value="claros"> si :3, tiene unos preciosos ojos claros </li>
+			<li> no, claros no... :/ </li>
+		</condition>
+	</template>
+
+</category>
+
+
+<!-- regla para saber si tiene gafas-->
+<category>
+	<pattern>TIENE ^ GAFAS ^</pattern>
+	<template>
+		<condition name="gafas">
+			<li value="si"> si tiene gafas, vas por buen camino :) </li>
+			<li> no... :/ </li>
+		</condition>
+	</template>
+</category>
+
+
+<!-- reglaS para saber el genero-->
+
+<category>
+	<pattern>ES ^ <set>mujer</set> ^</pattern>
+	<template>
+		<condition name="genero">
+			<li value="mujer"> asi es, vas por buen camino :) </li>
+			<li> no, no es una mujer ;-; </li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>ES ^ <set>hombre</set> ^</pattern>
+	<template>
+		<condition name="genero">
+			<li value="hombre"> has acertado... sigue pensando ^^ </li>
+			<li> no, no es un hombre ;D </li>
+		</condition>
+	</template>
+</category>
+
+	<!-- reglaS para saber el color de la piel-->
+	<category>
+	<pattern>TIENE ^ OSCURA ^</pattern>
+	<template>
+		<condition name="piel">
+			<li value="oscura"> Asi es, este personaje tiene la piel oscura ^^ </li>
+			<li> no, sigue intentandolo </li>
+		</condition>
+	</template>
+</category>
+
+<category>
+	<pattern>TIENE ^ CLARA ^</pattern>
+	<template>
+		<condition name="piel">
+			<li value="clara"> si, muy bien :) </li>
+			<li> no... </li>
+		</condition>
+	</template>
+</category>
+
+<!-- reglaS para saber si el nombre que dice es el correcto-->
+
+<category>
+	<pattern><set>nombre</set> * </pattern>
+	<template>
+		<think>
+			<set name="existe">
+			<srai>FINDITEM <star index="2"/> IN <get name="list_nombres"/></srai>
+			</set>
+		</think>
+		<condition name="existe">
+			<li value="0">Ese nombre no pertenece al juego...</li>
+			<li> pues... </li>
+		</condition>
+
+		<think>
+			<set name="respuesta">
+				<star index="2"/>
+			</set>
+		</think>
+		<think>
+		<set name="iguales">
+			<srai>
+			COMPARE <get name="elegida"/> WITH <get name="respuesta"/>
+			</srai>
+		</set>
+		</think>
+		<condition name="iguales">
+			<li value="YES"> siiiiii!! Has acertado :D. Otra partidita?</li>
+			<li> no, lo siento. Sigue intentadolo :3 </li>
+		</condition>
+</template>
+</category>
+
+
+
+
+														<!-- SEGUNDA PARTE -->
+
+<!--Para argumentar el error, creare variables con las caracteristicas que dice tener el personaje y se las mostrare-->
+<category>
+	<pattern><set>part</set></pattern>
+	<template>
+		Por favor, respondeme con SI/NO a las preguntas
+		De acuerdo, piensa un personaje
+		<think>
+			<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+		</think>
+	</template>
+</category>
+
+<category>
+	<pattern>^ PENSADO ^</pattern>
+	<template>
+		<random>
+			<li>es mujer?</li>
+			<li>es hombre?</li>
+		</random>
+
+	</template>
+</category>
+
+<!-- regla para saber si es mujer -->
+<category>
+<pattern>*</pattern>
+<that>ES MUJER</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="es">
+						<map name="genero"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+						
+						<condition name="es">
+							<li value="hombre">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="es">
+							<li value="mujer"> <!-- borramos los que si tienen bigote -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		de aucerdo...
+		<condition name="respuesta">
+					<li value="no">tiene bigote?</li>
+					<li value="si">tiene el pelo blanco?</li>
+		</condition>
+	
+</template>
+</category>
+
+<!-- regla para saber si es hombre -->
+<category>
+<pattern>*</pattern>
+<that>ES HOMBRE</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="es">
+						<map name="genero"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="es">
+							<li value="mujer">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="es">
+							<li value="hombre"> <!-- borramos los que si tienen bigote -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		vale...
+		<condition name="respuesta">
+					<li value="si">
+						tiene bigote? 
+					</li>
+					<li value="no">
+						tiene el pelo blanco?
+					</li>
+		</condition>
+</template>
+</category>
+
+<!-- regla para saber si tiene bigote -->
+<category>
+<pattern>*</pattern>
+<that>TIENE BIGOTE</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="bigote"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="no">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="si"> <!-- borramos los que si tienen bigote -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>
+			 <condition name="respuesta">
+				<li value="no">tiene barba?</li>
+				<li value="si">tiene el pelo rubio?</li>
+			</condition>
+			
+			</li>
+		</condition>
+</template>
+</category>
+
+
+<!-- esta regla esta construida para saber si es rubio-->
+<category>
+<pattern>*</pattern>
+<that>TIENE EL PELO RUBIO</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo rubio borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="moreno"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="marron"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="pelirrojo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="calvo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="blanco"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="rubio"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		Veamos...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+					<li value="no">
+						 tiene el pelo pelirrojo?	
+					</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+
+<!-- esta regla esta construida para saber si es CALVO-->
+<category>
+<pattern>*</pattern>
+<that>ES CALVO</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo rubio borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="moreno"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="marron"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="pelirrojo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="rubio"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="blanco"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="calvo"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		Veamos...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+					<li value="no">Tiene los ojos claros?</li>
+					<li value="si">tiene la piel clara?</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+<!-- esta regla esta construida para saber si tiene los ojos claros-->
+
+<category>
+<pattern>*</pattern>
+<that>TIENE LOS OJOS CLAROS</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="ojos"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="oscuros">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="claros"> <!-- borramos los que si tienen bigote -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>
+				<random>
+					<li> tiene el pelo de color marron? </li>
+					<li> tiene gafas? </li>
+				</random>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+<!-- esta regla esta construida para saber si tiene los ojos claros-->
+
+<category>
+<pattern>*</pattern>
+<that>TIENE LOS OJOS OSCUROS</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="ojos"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="claros">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="oscuros"> <!-- borramos los que si tienen los ojos oscuros -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>
+				<random>
+					<li> tiene el pelo de color marron? </li>
+					<li> es pelirrojo? </li>
+				</random>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+
+<!-- esta regla esta construida para saber si es PELIRROJO-->
+<category>
+<pattern>*</pattern>
+<that>TIENE EL PELO PELIRROJO</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo rubio borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="moreno"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="marron"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="rubio"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="calvo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="blanco"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="pelirrojo"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		Veamos...
+		<condition var="cantidad">
+			<li value="0"> 
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+					<li value="no">tiene el pelo moreno?</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+
+
+<!-- esta regla esta construida para saber si es moreno-->
+<category>
+<pattern>*</pattern>
+<that>TIENE EL PELO MORENO</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo rubio borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="rubio"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="marron"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="pelirrojo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="calvo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="blanco"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="moreno"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		Veamos...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+
+					<li value="si">tiene la piel oscura?</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+<!-- regla para saber si tiene barba -->
+<category>
+<pattern>*</pattern>
+<that>TIENE BARBA</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="barba"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="no">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="si"> <!-- borramos los que si tienen bigote -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>
+			 	<condition name="respuesta">
+					<li value="no">Es calvo?</li>
+				</condition>
+			
+			</li>
+		</condition>
+</template>
+</category>
+
+
+
+
+
+
+
+
+<!-- esta regla esta construida para saber si tiene la piel oscura-->
+
+<category>
+<pattern>*</pattern>
+<that>TIENE LA PIEL OSCURA</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="piel"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="clara">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="oscura"> <!-- borramos los que si tienen los ojos oscuros -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>Tiene barba?</li>
+		</condition>
+</template>
+</category>
+
+
+
+
+
+<!-- esta regla esta construida para saber si tiene la piel oscura-->
+
+<category>
+<pattern>*</pattern>
+<that>TIENE LA PIEL CLARA</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="piel"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si">
+		
+						<condition name="tiene">
+							<li value="oscura">
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="clara"> <!-- borramos los que si tienen los ojos oscuros -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		De acuerdo, a ver...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que lo he adivinado jajajajaja es... <get name="cand"/>
+			</li>
+			<li>Tiene barba?</li>
+		</condition>
+</template>
+</category>
+
+
+<!-- esta regla esta construida para saber si tiene el pelo blanco-->
+<category>
+<pattern>*</pattern>
+<that>TIENE EL PELO BLANCO</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo blanco borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="moreno"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="marron"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="pelirrojo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="calvo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="rubio"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="blanco"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+		Veamos...
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+					<li value="no">tiene el pelo marron?</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+<!-- esta regla esta construida para saber si es marron el pelo-->
+<category>
+<pattern>*</pattern>
+<that>TIENE EL PELO MARRON</that>
+<template>
+
+		<think>
+			<set name="respuesta">
+				<star/>
+			</set>
+
+		</think>
+		
+		<think>
+			<set name="item">
+			<srai> ITERATE <get name="candidatos"/> </srai>
+			</set>
+		</think>
+		<condition name="item">
+			<li value="end"></li>
+			<li>
+				<think>
+					<set name="tiene">
+						<map name="pelo"><get name="item"/></map>
+					</set>
+				</think>
+				<condition name="respuesta">
+					<li value="si"> <!-- si tiene el pelo rubio borramos los que lo tienen moreno calvo pelirrojo y marron-->
+		 
+						<condition name="tiene">
+							<li value="moreno"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="rubio"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="pelirrojo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+							<li value="calvo"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+
+
+							<li value="blanco"> 
+								<think>
+									<think>
+										<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+											<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+										</set>
+									</think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+
+							</li>
+						</condition>
+
+					</li>
+					<!-- si la respuesta que le damos es no -->
+					<li value="no">
+						<condition name="tiene">
+							<li value="marron"> <!-- borramos los que tienen el pelo rubio -->
+
+								<think>
+									<set name="pos"> <!-- almacena la posicion donde se encuentra el nombre a borrar -->
+										<srai>FINDITEM <get name="item"/> IN <get name="candidatos"/></srai>
+									</set>
+								</think>
+								<think>
+									<set name="candidatos">
+										<srai>
+										REMOVEITEM <get name="pos"/> IN <get name="candidatos"/>
+										</srai>
+									</set>
+								</think>
+							</li>
+						</condition>
+					</li>
+				</condition>
+				<think>
+					<set name="item">
+					<srai>NEXT</srai>
+					</set>
+				</think>
+				<loop/>
+
+			</li>
+		</condition>
+		<think>
+			<set var="cantidad"><srai>COUNT <get name="candidatos"/></srai></set>
+		</think>
+
+		<condition var="cantidad">
+			<li value="0">
+				Oye no quiero que me engañes eh... vamos a empezar de nuevo y sin engaños. O no quieres jugar mas?
+				Las caracteristicas que me has dicho no coinciden con ningun personaje de mi lista
+				<think>
+					<set name="candidatos">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+				</think>
+			</li>
+			<li value="1">
+				<think>
+				<set name="cand">
+					<srai> TOP <get name="candidatos"/></srai>
+				</set>
+				</think>
+				creo que ya lo tengo. Se llama... <get name="cand"/>
+			</li>
+			<li>
+				<condition name="respuesta">
+					<li value="no">tiene el pelo rubio?</li>
+				</condition>
+			</li>
+		</condition>
+</template>
+</category>
+
+
+
+
+<category>
+	<pattern>^ NO ^ JUGAR ^</pattern>
+	<template>
+		<random>
+			<li>Me abandonas eh... ;-; Hasta luego...</li>
+			<li>Pues OKKKK. Bye.</li>
+		</random>
+	</template>
+
+</category>
+
+<category>
+	<pattern>^ HAS ACERTADO ^</pattern>
+	<template>
+		<random>
+			<li>bieeeeeeeen :D Podemos jugar otra vez?</li>
+			<li>Es que soy muy listo. otra partidita?</li>
+			<li>Normal, con lo listo que soy... jugamos otra?.</li>
+		</random>
+	</template>
+</category>
+
+
+<category>
+	<pattern>^ <set>fallar</set> ^</pattern>
+	<template>entonces quien es?</template>
+</category>
+
+<!-- Para dar una respuesta coherente lo que he hecho es que comparamos ambos personajes, el que es y el que dice ser, de modo que el argumento siempre va a coincidir con las preguntas hechas ya que he seguido una -->
+<category>
+	<pattern>*</pattern>
+	<that>ENTONCES QUIEN ES</that>
+	<template>
+		<think>
+			<set name="res">
+				<star/>
+			</set>
+
+			<set name="cond">si</set>
+		</think>
+		
+		<condition name="cond">
+			
+			<li value="si">
+				<think>
+					<set name="mujer1">
+						<map name="genero"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="mujer2">
+						<map name="genero"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="mujer1"/> WITH <get name="mujer2"/></srai>
+				</set>
+				</think>
+			
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho es <get name="mujer1"/>
+						<think>
+							<set name="cond">no</set>
+						</think>
+					 </li>
+				</condition>
+				
+			</li>
+		</condition>
+		<condition name="cond">
+			<li value="si">
+				<think>
+					<set name="bigote1">
+						<map name="bigote"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="bigote2">
+						<map name="bigote"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="bigote1"/> WITH <get name="bigote2"/></srai>
+				</set>
+				</think>
+
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho <get name="bigote1"/> tiene bigote .
+						<think>
+							<set name="cond">no</set>
+						</think>
+					</li>
+				</condition>
+			
+			</li>
+		</condition>
+
+		<condition name="cond">
+			<li value="si">
+				<think>
+					<set name="barba1">
+						<map name="barba"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="barba2">
+						<map name="barba"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="barba1"/> WITH <get name="barba2"/></srai>
+				</set>
+				</think>
+
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho <get name="barba1"/> tiene barba .
+						<think>
+							<set name="cond">no</set>
+						</think>
+					</li>
+				</condition>
+				
+			</li>
+		</condition>
+		<condition name="cond">
+			<li value="si">
+				<think>
+					<set name="pelo1">
+						<map name="pelo"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="pelo2">
+						<map name="pelo"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="pelo1"/> WITH <get name="pelo2"/></srai>
+				</set>
+				</think>
+
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho tiene el pelo <get name="pelo1"/>
+						<think>
+							<set name="cond">no</set>
+						</think>
+					</li>
+				</condition>
+				
+			</li>
+
+		</condition>
+		
+		<condition name="cond">
+			<li value="si">
+
+				<think>
+					<set name="piel1">
+						<map name="piel"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="piel2">
+						<map name="piel"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="piel1"/> WITH <get name="piel2"/></srai>
+				</set>
+				</think>
+
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho tiene la piel <get name="piel1"/>
+						<think>
+							<set name="cond">no</set>
+						</think>
+					</li>
+				</condition>
+				
+			</li>
+		</condition>
+		<condition name="cond">
+			<li value="si">
+				<think>
+					<set name="ojos1">
+						<map name="ojos"><get name="cand"/></map>
+					</set>
+				</think>
+				<think>
+					<set name="ojos2">
+						<map name="ojos"><get name="res"/></map>
+					</set>
+				</think>
+				<think>
+				<set var="iguales">
+					<srai>COMPARE <get name="ojos1"/> WITH <get name="ojos2"/></srai>
+				</set>
+				</think>
+
+				<condition var="iguales">
+					<li value="NO">No puede ser ya que el personaje que tu me has dicho tiene los ojos <get name="ojos1"/></li>
+				</condition>
+			</li>
+		</condition>
+
+
+		<think>
+		<set name="ig"> <!-- por si le da por poner el mismo nombre que el acertado-->
+			<srai>
+			COMPARE <get name="cand"/> WITH <get name="res"/>
+			</srai>
+		</set>
+		</think>
+		<condition name="ig">
+			<li value="YES"> pues eso, que es <get name="cand"/> :D</li>
+		</condition>
+
+
+		<think> <!-- por si pone un nombre que no se encuentra en la lista-->
+			<set name="list_nombres">ALEJANDRO ALFONSO ANTONIO CRISTINA GABRIELA IVAN JAVIER JUAN LAURA LUIS MARCO MARIA PACO PEPE SOFIA SONIA</set>
+	
+			<set name="existe">
+			<srai>FINDITEM <get name="res"/> IN <get name="list_nombres"/></srai>
+			</set>
+		</think>
+		<condition name="existe">
+			<li value="0">Ese nombre no pertenece al juego...</li>
+		</condition>
+		
+	</template>
+</category>
+
+</aiml>

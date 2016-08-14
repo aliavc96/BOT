@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- nombre: Ana Alicia Vilchez Ceballos-->
+<!-- regla 1 -->
+<category>
+	<pattern>^ <set>saludo</set> ^</pattern>
+	<template>
+	<random>
+		<li> Buenas</li>
+		<li> Hola </li>
+		<li> Heyy </li> 
+		<li> hola!! </li>
+	</random>
+	</template>
+</category>
+
+<!-- regla 2 -->
+<category>
+	<pattern> ^ llamo * </pattern>
+	<template>
+		<random>
+			<li><set name="nombre"><star index="2"/> </set> ... me gusta ese nombre ;D.</li>
+			<li><set name="nombre"><star index="2"/> </set> ... bonito nombre.</li>
+			<li><set name="nombre"><star index="2"/> </set> ... OK</li>
+		</random>
+	
+	</template>
+
+</category>
+
+
+<category>
+	<pattern> ^ SOY * </pattern>
+	<template>
+		<random>
+			<li><set name="nombre"><star index="2"/> </set> ... me gusta ese nombre ;D.</li>
+			<li><set name="nombre"><star index="2"/> </set> ... bonito nombre.</li>
+			<li><set name="nombre"><star index="2"/> </set> ... OK</li>
+		</random>
+	
+	</template>
+
+</category>
+
+
+<!-- regla 3 -->
+<category>
+	<pattern>^ COMO ^  <set>aprobar</set> ^</pattern>
+	<template>
+		<condition name="nombre">
+			<li value="unknown">Para aprobar IA la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4.</li>
+
+			<li> 
+
+				pues veras <get name="nombre"/>... Para aprobar IA la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4. 
+			</li>
+		
+		</condition>
+
+	</template>
+</category>
+
+<!--  regla 4 -->
+
+<category>
+	<pattern> * </pattern>
+
+<template>
+		<condition name="nombre">
+			<li value="unknown">
+			<random>
+				<li>lo siento, no tengo respuestas para eso.</li>
+				<li>no se de que me estas hablando</li>
+				<li>eso no te lo puedo responder </li>
+				<li>perdona, que?</li>
+			</random>
+			</li>
+
+			<li> 
+			<random>
+
+				<li>pues veras <get name="nombre"/>... eso no te lo puedo responder </li>
+				<li>no se de que me estas hablando <get name="nombre"/>... :( </li>
+				<li>lo siento, no tengo respuestas para eso. <get name="nombre"/>...</li>
+				<li>de que me estas hablando <get name="nombre"/>... eso no te lo puedo responder </li>
+
+			</random>
+			</li>
+		
+		</condition>
+
+	</template>
+</category>
+
+<!-- regla -->
+<category>
+	<pattern> ^ COMO ^ <set>aprobar</set> ^ <set>teoria</set> ^ </pattern>
+	<template>Para aprobar la teoria es necesario aprobar el examen final, y en caso de que este no haya salido "flojillo", sacando buena nota en los examenes parciales.</template>
+</category>
+
+<!--regla 6-->
+
+
+<category>
+	<pattern> ^ COMO ^ <set>aprobar</set> ^ <set>practica</set> ^ </pattern>
+	<template>Para aprobar la parte practica es necesario superar el 5 en la media entre la defensa de las practicas y el examen de problemas.</template>
+</category>
+
+<!-- regla 7-->
+
+<category>
+	<pattern> ^  <set>evaluar</set> ^ CONVOCATORIA DE JUNIO ^ </pattern>
+	<template>En la convocatoria de Junio la teoria vale un 50% y la parte practica otro 50%.</template>
+</category>
+
+
+<!--regla 8-->
+<category>
+	<pattern>^ Como te llamas ^</pattern>
+	<template>
+		<random>
+			<li>pues <bot name="name"/></li>
+			<li>me llamo <bot name="name"/>, un placer </li>
+			<li><bot name="name"/>... y no me preguntes mas sobre mi persona. </li>
+			<li><bot name="name"/>... no quiero que hagas rimas con mi nombre, vale? </li>
+		</random>
+	</template>
+</category>
+
+<!-- regla 9-->
+
+<category>
+	<pattern> ^  <set>presentar</set> ^ CONVOCATORIA DE SEPTIEMBRE</pattern>
+	<template>En la convocatoria de septiembre se hara un examen escrito unico</template>
+</category>
+
+<!-- regla 10-->
+
+<category>
+	<pattern> ^ EXAMEN DE PRACTICAS ^ CONVOCATORIA DE SEPTIEMBRE ^ </pattern>
+	<template>No hay examen de practicas en la convocatoria de septiembre.</template>
+</category>
+
+<!-- regla 11-->
+
+<category>
+	<pattern> ^ NO ^ <set>asistir</set> A CLASE ^ </pattern>
+	<template>En ese caso se debe someter a la evaluacion unica.</template>
+</category>
+
+<!-- regla 12-->
+
+<category>
+	<pattern> ^ NOTA MINIMA ^ </pattern>
+	<template> Como minimo hay que sacar un 4 para hacer media con la otra parte.</template>
+</category>
+
+<!-- regla 13-->
+
+<category>
+	<pattern> ^ <set>practica</set> ^ OBLIGATORIAS ^ </pattern>
+	<template>Lo son, si se sigue la evaluacion continua.</template>
+</category>
+
+<category>
+	<pattern> ^ OBLIGATORIAS ^ <set>practica</set> ^ </pattern>
+	<template>Lo son, si se sigue la evaluacion continua.</template>
+</category>
+
+<!-- regla 14 -->
+
+<category>
+	<pattern> ^ VALE  ^  <set>practica</set> </pattern>
+	<template>valen lo siguiente:
+			Agente conversacional --> 25%
+			Resolucion de problemas con agentes reactivos --> 25%
+			Resolucion del juego basado en tecnicas de busqueda --> 25%
+	</template>
+</category>
+
+<!--regla 15-->
+
+<category>
+	<pattern> ^ VALE ^ PARTICIPACION ^ </pattern>
+	<template>Aproximadamente un 10%.</template>
+</category>
+
+<!--regla 16-->
+
+<category>
+	<pattern> ^ VALE ^ GUION DE PRACTICAS ^ </pattern>
+	<template>valen lo siguiente:
+			Agente conversacional --> 25%
+			Resolucion de problemas con agentes reactivos --> 25%
+			Resolucion del juego basado en tecnicas de busqueda --> 25%</template>
+</category>
+
+
+<!--regla 17-->
+
+<category>
+	<pattern> ^ <set>conseguir</set> ^ PUNTOS POR PARTICIPACION ^ </pattern>
+	<template>Asistiendo a clase, mostrando interes y saliendo a la pizarra.</template>
+</category>
+
+<!--regla 18-->
+
+<category>
+	<pattern> ^ MINIMO ^  <set>aprobar</set> ^ ASIGNATURA ^ </pattern>
+	<template>
+	<condition name="nombre">
+			<li value="unknown">Para aprobar la asignatura la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4.</li>
+
+			<li> 
+
+				pues veras <get name="nombre"/>... Para aprobar la asignatura la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4. 
+			</li>
+		
+		</condition>
+
+	</template>
+</category>
+
+<!--regla 18-->
+
+<category>
+	<pattern> ^  <set>aprobar</set> ^ <set>asignatura</set> </pattern>
+	<template>
+	<condition name="nombre">
+			<li value="unknown">Para aprobar la asignatura la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4.</li>
+
+			<li> 
+
+				pues veras <get name="nombre"/>... Para aprobar la asignatura la media de teoria y practicas ha de ser de 5 como minimo, teniendo en cada parte un minimo de 4. 
+			</li>
+		
+		</condition>
+
+	</template>
+</category>
+
+
+
+<!--regla 19-->
+
+<category>
+	<pattern> ^ TRABAJOS ^ INDIVIDUALES ^ </pattern>
+	<template>Lo son, a no ser que se diga lo contrario.</template>
+</category>
+
+<!--regla 20-->
+
+<category>
+	<pattern> ^ TRABAJOS ^ GRUPO ^ </pattern>
+	<template>No, no se puede a no ser que se diga lo contrario.</template>
+</category>
+
+<!--regla 21-->
+
+<category>
+	<pattern> ^ EJERCICIOS ^ RELACIONES DE PROBLEMAS ^ </pattern>
+	<template>Eso lo determina el profesor de practicas.</template>
+</category>
+
+
+<!--regla 22-->
+<category>
+	<pattern> ^ ESTUDIAR ^ </pattern>
+	<template>
+	<condition name="nombre">
+
+			<li value="unknown">
+				<random>
+					<li>yo te diria que porque el esfuerzo en el estudio hace que se desarrolle mas tu capacidad para resolver los problemas de esta asignatura y sentirte realizado en la vida de estudiante.</li>
+
+					<li> A mi no me preguntes eso. </li>
+					<li> Porque si. </li>
+				</random>
+
+			</li>
+
+			<li> 
+			<random>
+				<li>pues veras <get name="nombre"/>...  yo te diria que porque el esfuerzo en el estudio hace que se desarrolle mas tu capacidad para resolver los problemas de esta asignatura y sentirte realizado en la vida como estudiante.</li>
+				<li> <get name="nombre"/>... Porque si. A mi que me cuentas...</li>
+				<li>Pero bueno <get name="nombre"/> a mi no me preguntes eso. </li>
+			</random>
+			</li>
+		
+		</condition>
+
+	</template>
+</category>
+
+<!--regla 23-->
+<category>
+	<pattern> ^ <set>primero</set> ^ <set>examen</set> ^ <set>teoria</set> ^ </pattern>
+	<template>El primer examen de teoria vale 0.5 sobre el examen final (que va sobre 10).</template>
+</category>
+
+<!--regla 24-->
+<category>
+	<pattern> ^ <set>nota</set> MAYOR ^ 10 ^ </pattern>
+	<template>Como poder puedes, ya que en la parte teorica puedes conseguir hasta un maximo de 12 puntos, aunque en el expediente obviamente no va a aparecer un 12 sino un 10.</template>
+</category>
+
+<!--regla 25-->
+<category>
+	<pattern> ^ RECUPERAR ^ EXAMEN ^</pattern>
+	<template>Si se tiene una justificacion lo suficientemente fuerte como para que no se haya podido realizar, se puede.</template>
+</category>
+
+<!--regla 26-->
+<category>
+	<pattern> ^ RECUPERAR ^ <set>practica</set> ^ </pattern>
+	<template>Si se tiene una justificacion lo suficientemente fuerte como para que no se haya podido realizar, se puede.</template>
+</category>
+
+<!--regla 27-->
+<category>
+	<pattern> ^ <set>copio</set> ^  </pattern>
+	<template>Tanto copiarse como dejarse copiar supondra el suspenso automatico de la asignatura en esta convocatoria.</template>
+</category>
+
+
+<!--regla 29-->
+<category>
+	<pattern> ^ <set>suspender</set> ^ CONVOCATORIA DE JUNIO ^  </pattern>
+	<template>Que podras optar a la convocatoria de septiembre.</template>
+</category>
+
+
+
+<!-- regla 30-->
+
+<category>
+	<pattern> ^ CUANTO ^ <set>practica</set> Y ^ TEORIA </pattern>
+	<template> la teoria vale un 50% y la parte practica otro 50%.</template>
+</category>
+
+<!-- regla 31-->
+
+<category>
+	<pattern> ^ CUANTO ^ <set>teoria</set> Y ^ <set>practica</set> ^ </pattern>
+	<template> la teoria vale un 50% y la parte practica otro 50%.</template>
+</category>
+
+<!-- regla 32-->
+
+<category>
+	<pattern> ^ CUANTO ^ <set>practica</set> Y ^ <set>teoria</set> ^</pattern>
+	<template> la teoria vale un 50% y la parte practica otro 50%.</template>
+</category>
+
+<!-- regla 33-->
+
+<category>
+	<pattern> ^ HORARIO ^ TUTORIAS ^ <set>practica</set> ^ </pattern>
+	<template> Como se llama su profesor (con nombre y apellidos completos por favor)</template>
+</category>
+
+
+<!-- regla 34-->
+
+<category>
+	<pattern>JUAN FERNANDEZ OLIVARES</pattern>
+	<template> informacion de tutorias y despacho: 
+			Martes de 10:00 a 13:00 en D24 4 planta(ETSIIT)
+			Jueves de 10:00 a 13:00 en D24 4 planta(ETSIIT)</template>
+</category>
+
+<!-- regla 35-->
+
+<category>
+	<pattern>RAUL PEREZ RODRIGUEZ</pattern>
+	<template> informacion de tutorias y despacho: 
+			Lunes de 10:00 a 13:30 en D23 4 planta(ETSIIT)
+			Martes de 10:00 a 11:30 en D23 " "(ETSIIT)
+			Miércoles de 17:00 a 18:00 en D23 " "(ETSIIT)</template>
+</category>
+
+
+<!-- regla 36-->
+
+<category>
+	<pattern> ^ CORREO ^ PROFESOR ^ <set>teoria</set> ^ </pattern>
+	<template> mdelgado@decsai.ugr.es </template>
+</category>
+
+<!-- regla 37-->
+
+<category>
+	<pattern> ^ APROBAR ^ <set>practica</set> ^ NO ^ <set>practica</set> </pattern>
+	<template> Si la media con el resto de practicas sale aprobado si.</template>
+</category>
+
+
+<!-- regla 39-->
+
+<category>
+	<pattern> 
+		^ NO ^ <set>asistir</set> ^ <set>defensa</set> ^ <set>practica</set> ^ <set>numero</set> 
+	</pattern>
+	<template> Tendras que justificarlo previamente y podras defender la practica otro dia.</template>
+</category>
+
+<!-- regla 40-->
+
+<category>
+	<pattern> 
+		 ^ <set>cuanto</set> <set>examen</set> ^ <set>teoria</set> ^ 
+	</pattern>
+	<template> tendras tres examenes parciales y un final, o sea 4.</template>
+</category>
+
+<category>
+	<pattern> 
+		 ^ <set>examen</set> ^ <set>teoria</set> <set>cuanto</set> ^
+	</pattern>
+	<template> tendras tres examenes parciales y un final, o sea 4.</template>
+</category>
+
+
+<!-- regla 41-->
+
+<category>
+	<pattern> 
+		 ^ ASISTENCIA ^
+	</pattern>
+	<template> La asistencia se tiene en cuenta tanto en la parte teorica como en a parte practica.</template>
+</category>
+
+
+
+<!-- regla 42-->
+
+<category>
+	<pattern> 
+		 ^ <set>examen</set> ^ <set>ejercicios</set> ^
+	</pattern>
+	<template> Es una prueba de ejercicios basada en la relacion de problemas de la asignatura.</template>
+</category>
+
+<!-- regla 43-->
+
+<category>
+	<pattern> 
+		^ NO ^ QUIERO ^ <set>defensa</set> ^ <set>practica</set>
+	</pattern>
+	<template> Que en esa practica tendras un 0. </template>
+</category>
+
+
+<!-- regla 44-->
+
+<category>
+	<pattern> 
+		^ NO ^ <set>superar</set> ^ NIVEL <set>numero</set>  ^ <set>practica</set> <set>numero</set> 
+	</pattern>
+	<template> En ese caso acude al profesor para resolver las posibles dudas que tengas. </template>
+</category>
+
+
+<!-- 39. CUANTAS PRACTICAS ENTREGABLES TIENE LA ASIGNATURA?-->
+
+<!-- regla 45-->
+
+<category>
+	<pattern> 
+		^ <set>practica</set> ^ <set>tener</set> ^ 
+	</pattern>
+	<template> La asignatura contiene 3 practicas entregables. </template>
+</category>
+<!-- regla 46-->
+<category>
+	<pattern> 
+		^ <set>practica</set> ^ <set>lenguaje</set> ^ 
+	</pattern>
+	<template> Hazlas en el lenguaje que corresponda y punto. </template>
+</category>
+
+<!-- regla 47-->
+<category>
+	<pattern> 
+		^ <set>despacho</set> ^ PROFESOR ^ <set>teoria</set> ^ 
+	</pattern>
+	<template> Despacho 36 de la cuarta planta. </template>
+</category>
+<!-- regla 48-->
+<category>
+	<pattern> 
+		^ <set>despacho</set> ^ PROFESOR ^ <set>practica</set> ^ 
+	</pattern>
+	<template> Como se llama tu profesor? (con nombre y apellidos completos por favor). </template>
+</category>
+
+<!-- regla 49-->
+<category>
+	<pattern> 
+		^ <set>numerom</set>  ^ <set>practica</set> ^  <set>aprobar</set> ^ <set>practica</set>
+	</pattern>
+	<template> Si, tendras un 10 en la parte practica. </template>
+</category>
+
+<!-- regla 50-->
+<category>
+	<pattern> 
+		^ <set>aprobar</set> ^ <set>practica</set> ^ <set>numerom</set>  ^ 
+	</pattern>
+	<template> Si, tendras un 10 en la parte practica. </template>
+</category>
+
+
+<!-- regla 51-->
+<category>
+	<pattern> 
+		^ <set>numerom</set> ^ <set>practica</set> ^ <set>aprobar</set> ^ <set>asignatura</set> 
+	</pattern>
+	<template> Si tienes un 4 como minimo en la teoria si. </template>
+</category>
+<!-- regla 51-->
+<category>
+	<pattern> 
+		<set>aprobar</set> ^ <set>asignatura</set>  ^ <set>numerom</set> ^ <set>practica</set> 
+	</pattern>
+	<template> Si tienes un 4 como minimo en la teoria si. </template>
+</category>
+
+<!-- regla 52-->
+<category>
+	<pattern> 
+		^ NO ^ <set>hacer</set> ^ <set>practica</set> ^ <set>recuperar</set> ^
+	</pattern>
+	<template> No puedes, lo siento. </template>
+</category>
+
+<category>
+	<pattern> 
+		^ PRACTICA 1, ^ RECUPERAR
+	</pattern>
+	<template>No puedes, lo siento.</template>
+</category>
+
+<!-- regla 53-->
+<category>
+	<pattern> 
+		^ NO ^ <set>hacer</set> ^ <set>practica</set> ^ <set>aprobar</set> ^
+	</pattern>
+	<template> como poder aprobar todavia puedes, asi que fuera nervios. </template>
+</category>
+
+<category>
+	<pattern> 
+		^ PRACTICA 1, ^ <set>aprobar</set>
+	</pattern>
+	<template> como poder aprobar todavia puedes, asi que fuera nervios. </template>
+</category>
+
+<!-- regla 53-->
+<category>
+	<pattern> 
+	^ <set>aprobar</set> ^ <set>practica</set>  ^ NO ^ <set>hacer</set> ^ 
+	</pattern>
+	<template> como poder aprobar todavia puedes, asi que fuera nervios. </template>
+</category>
+
+<!-- regla 54-->
+<category>
+	<pattern> 
+		^ <set>agentes</set> ^
+	</pattern>
+	<template> me alegro mucho por ti, espero que seas muy feliz... pero dejate de tonterias por favor. </template>
+</category>
+
+<!-- regla 55-->
+<category>
+	<pattern> 
+		^ PROGRAMAR ^ <set>practica</set> ^
+	</pattern>
+	<template> es que no te gusta programar o que?. </template>
+</category>
+
+<!-- regla 56-->
+<category>
+	<pattern> 
+		^ <set>practica</set> ^ PROGRAMAR  ^
+	</pattern>
+	<template> es que no te gusta programar o que?. </template>
+</category>
+
+<!-- regla 57-->
+<category>
+	<pattern> 
+		^ <set>facil</set>  ^
+	</pattern>
+	<template> Te crees muy inteligente, eh? Pues respondete tu. </template>
+</category>
+
+<!-- regla 57-->
+<category>
+	<pattern> 
+		^ FACIL,  ^
+	</pattern>
+	<template> Te crees muy inteligente, eh? Pues respondete tu. </template>
+</category>
+
+
+<!--QUE PUNTUACION OBTENGO EN LA PRACTICA 1 SI OPTO POR
+DEFENDER EL NIVEL 3 Y NO LO SUPERO?-->
+
+<!-- regla 58-->
+<category>
+	<pattern> 
+		^ <set>conseguir</set>  ^ PRACTICA 1 ^ NIVEL 3 ^ NO ^ <set>superar</set>
+	</pattern>
+	<template> Tendras un 6 entonces. </template>
+</category>
+
+<!-- regla 59-->
+<category>
+	<pattern> 
+		^ <set>conseguir</set>  ^ PRACTICA 1 ^ NO ^ <set>superar</set> ^ NIVEL 3 ^ 
+	</pattern>
+	<template> Tendras un 6 entonces. </template>
+</category>
+
+<!--31. PUEDO ENTREGAR LA PRACTICA 1 SIN HACER LA TAREA RELATIVA AL
+NIVEL 0?-->
+
+<!-- regla 60-->
+<category>
+	<pattern> 
+		^  <set>practica</set> <set>numero</set> ^ NO ^ <set>hacer</set> ^ NIVEL 0 ^ 
+	</pattern>
+	<template> Sería suspenso pero puedes entregarla. </template>
+</category>
+
+<!-- regla 60-->
+<category>
+	<pattern> 
+		^  <set>practica</set> <set>numero</set> ^ SIN ^ <set>hacer</set> ^ NIVEL 0 ^ 
+	</pattern>
+	<template> Sería suspenso pero puedes entregarla. </template>
+</category>
+
+
+
+
+</aiml>
